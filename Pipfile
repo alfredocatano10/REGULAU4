@@ -8,6 +8,9 @@ django-crispy-forms = "*"
 pillow = "*"
 django = "*"
 psycopg2-binary = "*"
+django-allauth = "*"
+python-social-auth = "*"
+social-auth-app-django = "*"
 
 [dev-packages]
 

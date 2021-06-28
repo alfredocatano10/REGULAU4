@@ -4,7 +4,14 @@
 
 <div class="jumbotron p-4">
     
-    <center><h1>Bienvenidos a nuestro centro de comida</h1></center><hr>
+    <center><h1>COME CHIDO POR TORREÓN</h1></center><hr>
+
+    <form class="form-control"  
+    method="get" 
+    action="{% url 'GordasBusqueda' %}">
+        <input name="b" class="form-control" type="text"
+               placeholder="Buscar comida">
+   </form><hr>
 
     <div class="row">
     	<img src="{% static 'img/centro.png' %}" height="430px"

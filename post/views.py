@@ -17,11 +17,10 @@ from django.core.mail import send_mail, BadHeaderError
 from django.contrib.auth.forms import PasswordResetForm
 from django.db.models.query_utils import Q
 from django.contrib.auth import update_session_auth_hash
-
+from django.db.models import Q
 
 #-------------------------------------------------------------------------
 #-------------------------------------------------------------------------
-
 
 class HomeView(ListView):
 	model = tacos
@@ -248,7 +247,16 @@ def modificar_tacos (request, id):
 	return render(request, 'modificar.html', data)
 
 
+class GordasBusqueda(ListView):
+	model = gordas
+	template_name = 'GordasBusqueda.html'
+	context_object_name = 'gordas_list'
 
+	def get_queryset(self):
+		Busq = self.request.GET.get('b')
+		return gordas.objects.filter(Q(nomb__contains=Busq))
+		
+			
 
 #-------------------------------------------------------------------------
 #-------------------------------------------------------------------------

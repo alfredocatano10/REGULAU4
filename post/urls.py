@@ -1,6 +1,6 @@
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
-from .views import tacosView,gordasView,lonchesView,modificar_gordas,modificar_lonches,modificar_tacos,eliminar_gordas,eliminar_lonches,eliminar_tacos,agregar_gordas,agregar_lonches,agregar_tacos,password_reset_request,HomeView,RegistroPageView,registroUsuario,changePassword
+from .views import GordasBusqueda, tacosView,gordasView,lonchesView,modificar_gordas,modificar_lonches,modificar_tacos,eliminar_gordas,eliminar_lonches,eliminar_tacos,agregar_gordas,agregar_lonches,agregar_tacos,password_reset_request,HomeView,RegistroPageView,registroUsuario,changePassword
 
 #SE AGREGAN LAS RUTAS DE LA APLICACION (POST) Y SE IMPORTARON LAS VISTAS DE .view
 urlpatterns = [
@@ -21,4 +21,5 @@ urlpatterns = [
 	path('modificar_lonches/<id>/',modificar_lonches, name = 'modificar_lonches'),
 	path('eliminar_lonches/<id>/',eliminar_lonches, name = 'eliminar_lonches'),
 	path('AGREGARLONCHES/',agregar_lonches, name = 'agregar'),
+	path('GordasBusqueda/', GordasBusqueda.as_view(), name = 'GordasBusqueda'),
 ]

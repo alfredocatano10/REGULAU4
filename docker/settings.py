@@ -53,7 +53,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'crispy_forms',
+    'allauth',
+    'allauth.account', 
+
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.github',
+    
 ]
 
 MIDDLEWARE = [
@@ -152,14 +159,32 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
+#INICIO DE SESION POR USUARIO O CORREO
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 MEDIA_URL = '/media/'
-
 LOGIN_REDIRECT_URL = 'home'
-
 LOGOOUT_REDIRECT_URL = 'index'
-
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+ACCOUNT_EMAIL_VERIFICATION = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+
+SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = (
+ 'django.contrib.auth.backends.ModelBackend',
+ 'allauth.account.auth_backends.AuthenticationBackend',
+ 
+ 'social_core.backends.github.GithubOAuth2',
+)
+
+SOCIAL_AUTH_GITHUB_KEY = '2cf849a52755a8fa31c9'
+
+SOCIAL_AUTH_GITHUB_SECRET = 'cf511afe22bdd7d7523cfe2932227501a87614fe'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
